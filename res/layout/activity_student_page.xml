@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".StudentPage" >
+
+         <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+       android:layout_gravity="center"
+       android:layout_marginTop="30dp"
+        
+        android:src="@drawable/stu" />
+
+   
+
+    <Button
+        android:id="@+id/btSign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="#FC6700"
+        android:text="Create your own account"
+        android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/btLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btSign"
+        android:layout_alignLeft="@+id/btSign"
+        android:layout_marginBottom="30dp"
+        android:background="#FC6700"
+        android:text="Already have an account"
+        android:textColor="#fff" />
+
+    
+
+</RelativeLayout>
