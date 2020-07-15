@@ -33,7 +33,7 @@ public final class R {
         public static final int choice1=0x7f080011;
         public static final int choice2=0x7f080012;
         public static final int choice3=0x7f080013;
-        public static final int cnfmPass=0x7f08000d;
+        public static final int email=0x7f08000d;
         public static final int grade=0x7f080007;
         public static final int imageView1=0x7f080015;
         public static final int name=0x7f08000a;

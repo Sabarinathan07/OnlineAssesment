@@ -1,6 +1,5 @@
 package com.sabari.test;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,8 +13,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -32,12 +29,7 @@ public class TeacherActivity extends Activity implements OnClickListener {
 	Button login;
 	ProgressDialog progressDialog;
 	
-	public class Constants{
-		private static final String ROOT_URL = "http://192.168.29.197/quiz%20app/v1/";
-	    public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
-	   
 
-		}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +54,7 @@ public class TeacherActivity extends Activity implements OnClickListener {
         progressDialog.show();
         
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-        	Constants.URL_REGISTER,
+        	Constants.URL_STAFF_REGISTER,
         	new Response.Listener<String>() {
         	
         	@Override
@@ -71,6 +63,14 @@ public class TeacherActivity extends Activity implements OnClickListener {
         		try {
         			JSONObject jsonObject = new JSONObject(Response);
 					Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+					boolean isError = jsonObject.getBoolean("error");
+					if(isError){
+						
+					}
+					else{
+						Intent i = new Intent(getBaseContext(),StudentActivity.class);
+						startActivity(i);
+					}
 
 					
 				} catch (JSONException e) {
@@ -86,6 +86,7 @@ public class TeacherActivity extends Activity implements OnClickListener {
         			Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show() ;
 			}
 			}	
+			
         
         	){
         	@Override
@@ -100,8 +101,9 @@ public class TeacherActivity extends Activity implements OnClickListener {
 		
 	};
 	
-	 RequestQueue requestQueue = Volley.newRequestQueue(this);
-     requestQueue.add(stringRequest);
+    RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+//	 RequestQueue requestQueue = Volley.newRequestQueue(this);
+//     requestQueue.add(stringRequest);
      
 	};
 
@@ -116,8 +118,9 @@ public class TeacherActivity extends Activity implements OnClickListener {
 	public void onClick(View view) {
 		if (view == login)
 			registerUser();
-		Intent i = new Intent(getBaseContext(),StudentActivity.class);
-		startActivity(i);
+//		Intent i = new Intent(getBaseContext(),StudentActivity.class);
+//		startActivity(i);
+
 		
 		
 	}

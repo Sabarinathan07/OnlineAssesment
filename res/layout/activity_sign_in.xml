@@ -52,15 +52,15 @@
         android:textColorHint="#FC6700" />
 
     <EditText
-        android:id="@+id/cnfmPass"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
+        android:hint="Enter Your Email "
+        android:inputType="textEmailAddress"
         android:textColor="#FC6700"
         android:textColorHint="#FC6700" />
 
