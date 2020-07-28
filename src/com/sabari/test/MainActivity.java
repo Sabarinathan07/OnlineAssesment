@@ -1,5 +1,11 @@
 package com.sabari.test;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.android.volley.toolbox.JsonObjectRequest;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -15,6 +21,11 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         btStudent = (Button) findViewById(R.id.btStudent);
         btTeacher = (Button) findViewById(R.id.btTeacher);
+        
+        if(SharePrefManager.getId(getApplicationContext())!=0){
+        	Intent studentIntent = new Intent(getBaseContext(),Topics.class);
+			startActivity(studentIntent);
+        }
         
         btStudent.setOnClickListener(new View.OnClickListener() {
 			
@@ -46,5 +57,23 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+//    private void getQuestions(String response){
+//    	JsonObjectRequest
+//    	
+//    	ArrayList<Question> list = new ArrayList<Question>();
+//    	try {
+//			JSONArray array = new JSONArray(response);
+//			for(int i = 0; i<array.length(); i++){
+//				JSONObject questionJSonObj = array.getJSONObject(i);
+//				String question,choice1,choice2,choice3,answer;
+//				Question question = new Question(question,choice1,choice2,choice3,answer);
+//				list.add(question);
+//			}
+//			
+//		} catch (JSONException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    }
     
 }

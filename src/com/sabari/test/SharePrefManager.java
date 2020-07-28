@@ -13,6 +13,8 @@ import android.content.SharedPreferences;
 	    private static final String KEY_USERNAME = "username";
 	    private static final String KEY_USER_EMAIL = "useremail";
 	    private static final String KEY_USER_ID = "userid";
+	    private static final String KEY_QUIZ_ID = "quizid";
+	    private static final String KEY_NAME = "name";
 
 
 	    private SharePrefManager(Context context) {
@@ -40,6 +42,30 @@ import android.content.SharedPreferences;
 
 	        return true;
 	    }
+	    
+	    public boolean name(String name){
+
+	        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+	        SharedPreferences.Editor editor = sharedPreferences.edit();
+  	        editor.putString(KEY_NAME,name);
+
+	        editor.apply();
+
+	        return true;
+	    }
+	    
+	    public boolean quizid(int quizid){
+
+	        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+	        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+	        editor.putInt(KEY_QUIZ_ID, quizid);
+	        
+	        editor.apply();
+
+	        return true;
+	    }
+	    
 
 	    public boolean isLoggedIn(){
 	        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -58,15 +84,29 @@ import android.content.SharedPreferences;
 	    }
 
 
-	    public String getUsername(){
+	    public static int getId(Context mCtx){
 	        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-	        return sharedPreferences.getString(KEY_USERNAME, null);
+	        return sharedPreferences.getInt(KEY_USER_ID, 0);
 	    }
+	    
+	    public static int getQuizId(Context mCtx){
+	        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+	        return sharedPreferences.getInt(KEY_QUIZ_ID, 0);
+	    }
+	    
+	    
 
 	    public String getUserEmail(){
 	        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
 	        return sharedPreferences.getString(KEY_USER_EMAIL, null);
 	    }
+	    
+	    public String getName(){
+	        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+	        return sharedPreferences.getString(KEY_NAME, null);
+	    }
+
+
 	}
 
 

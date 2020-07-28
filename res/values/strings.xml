@@ -11,5 +11,7 @@
     <string name="title_activity_sign_in">Sign In</string>
     <string name="title_activity_result">Result</string>
     <string name="title_activity_teacher_page">Teacher</string>
+    <string name="title_activity_topics">Topics</string>
+    <string name="title_activity_quiz">Quiz</string>
 
 </resources>

@@ -20,8 +20,8 @@
         android:ems="10"
         android:hint="Enter Your Username"
         android:inputType="textPersonName"
-        android:textColor="#FC6700" 
-        android:textColorHint="#FC6700"/>
+        android:textColor="#7A7A7A"
+        android:textColorHint="#9CA19F"/>
 
         
    
@@ -33,9 +33,10 @@
         android:layout_marginTop="45dp"
         android:ems="10"
         android:hint="Enter Your Password"
-        android:textColor="#FC6700"
+        
         android:inputType="textPassword"
-        android:textColorHint="#FC6700" />
+        android:textColor="#7A7A7A"
+        android:textColorHint="#9CA19F" />
     
     </LinearLayout>
        
@@ -46,8 +47,9 @@
         android:layout_alignLeft="@+id/pass"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="30dp"
-        android:background="#fc6700"
-        android:text="Login"
-        android:textColor="#fff" />
+        android:background="#4267B2"
+        android:text="Log In"
+        android:textColor="#fff"
+        android:textStyle="bold" />
 
 </RelativeLayout>

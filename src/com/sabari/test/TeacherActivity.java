@@ -50,11 +50,11 @@ public class TeacherActivity extends Activity implements OnClickListener {
 		final String sName = name.getText().toString().trim();
 		final String sPassword = password.getText().toString().trim();
 		
-        progressDialog.setMessage("Registering user...");
+        progressDialog.setMessage("Please wait....");
         progressDialog.show();
         
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-        	Constants.URL_STAFF_REGISTER,
+        	Constants.URL_STAFF_LOGIN,
         	new Response.Listener<String>() {
         	
         	@Override
@@ -62,13 +62,14 @@ public class TeacherActivity extends Activity implements OnClickListener {
         		progressDialog.dismiss();
         		try {
         			JSONObject jsonObject = new JSONObject(Response);
-					Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+					
 					boolean isError = jsonObject.getBoolean("error");
 					if(isError){
-						
+						Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
 					}
 					else{
-						Intent i = new Intent(getBaseContext(),StudentActivity.class);
+						Toast.makeText(getApplicationContext(), "user login successful!!", Toast.LENGTH_LONG).show();
+						Intent i = new Intent(getBaseContext(),TeacherPage.class);
 						startActivity(i);
 					}
 

@@ -28,9 +28,10 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:background="#FC6700"
+        android:background="#5B9248"
         android:text="Create your own account"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+         />
 
     <Button
         android:id="@+id/btLogin"
@@ -39,9 +40,10 @@
         android:layout_above="@+id/btSign"
         android:layout_alignLeft="@+id/btSign"
         android:layout_marginBottom="30dp"
-        android:background="#FC6700"
+        android:background="#3B5998"
         android:text="Already have an account"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+          />
 
     
 

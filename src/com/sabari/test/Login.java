@@ -28,6 +28,7 @@ public class Login extends Activity implements OnClickListener {
 	private Button start;
 	private ProgressDialog progressDialog;
 	
+	
 
 
 	@Override
@@ -68,6 +69,10 @@ public class Login extends Activity implements OnClickListener {
                                         obj.getString("email")
                 						);
                 				
+                				 SharePrefManager.getInstance(getApplicationContext()).name(obj.getString("username"));
+                			
+                				
+                				
                 				Toast.makeText(getApplicationContext(), "Student login successful!!", Toast.LENGTH_LONG).show();
                 				
                 				boolean isError = obj.getBoolean("error");
@@ -75,16 +80,18 @@ public class Login extends Activity implements OnClickListener {
             						
             					}
             					else{
-            						Intent i = new Intent(getBaseContext(),StudentActivity.class);
+            						
+            						Intent i = new Intent(getBaseContext(),Topics.class);
             						startActivity(i);
             					}
                 			
-                			}else{
+                		}else{
                 					Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                 			}
                 			
                 			
 						} catch (JSONException e) {
+							
 							e.printStackTrace();
 							
 						}
@@ -132,6 +139,7 @@ public class Login extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 		if(view==start)
+			
 			userLogin();
 		
 	}

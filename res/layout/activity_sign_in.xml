@@ -7,6 +7,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SignIn" >
+    
+    
 
     <EditText
         android:id="@+id/name"
@@ -18,8 +20,8 @@
         android:ems="10"
         android:hint="Enter Your Name"
         android:inputType="textPersonName"
-        android:textColor="#FC6700"
-        android:textColorHint="#FC6700" />
+        android:textColor="#7A7A7A"
+        android:textColorHint="#9CA19F" />
 
     <EditText
         android:id="@+id/username1"
@@ -31,14 +33,14 @@
         android:ems="10"
         android:hint="Enter Your Username"
         android:inputType="textPersonName"
-        android:textColor="#FC6700"
-        android:textColorHint="#FC6700" >
+        android:textColor="#7A7A7A"
+        android:textColorHint="#9CA19F" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/email1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/username1"
@@ -46,23 +48,24 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:hint="Enter Your Password"
-        android:inputType="textPassword"
-        android:textColor="#FC6700"
-        android:textColorHint="#FC6700" />
+        android:hint="Enter Your Email "
+        android:inputType="textEmailAddress"
+        android:textColor="#7A7A7A"
+        android:textColorHint="#9CA19F"/>
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/password1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/email1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:hint="Enter Your Email "
-        android:inputType="textEmailAddress"
-        android:textColor="#FC6700"
-        android:textColorHint="#FC6700" />
+
+         android:hint="Enter Your Password"
+        android:inputType="textPassword"
+        android:textColor="#7A7A7A"
+        android:textColorHint="#9CA19F" />
 
     <Button
         android:id="@+id/start"
@@ -71,9 +74,22 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        
-        android:background="#fc6700"
-        android:text="Start Your Quiz"
+        android:textStyle="bold"
+        android:background="#5B9248"
+        android:text="SIGN UP"
         android:textColor="#fff"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="*password must contain 8 characters*"
+        android:textAppearance="?android:attr/textAppearanceSmall" 
+        android:textColor="#999999"
+        
+        />
 
 </RelativeLayout>

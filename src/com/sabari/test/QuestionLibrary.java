@@ -27,13 +27,7 @@ public class QuestionLibrary {
             "Name the king Amba was secretly in love with him and promised to place the varmala on his neck.",
             "Daughter of Arjuna and Draupadi",
             "Name the Kingdom belongs to the princess Amba"
-            
-            
-            
-
-    };
-
-
+              };
     private String mChoices [][] = {
             {"Arjunan", "Krishnan", "Bheeman"},
             {"Radheya", "Partha", "Kriti"},

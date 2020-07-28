@@ -6,12 +6,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-   
-    android:layout_gravity="bottom"
-    tools:context=".StudentActivity" >
-    
-     <RelativeLayout
+    tools:context=".QuizActivity"
+    android:orientation="vertical" >
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         
@@ -39,10 +37,10 @@
     <TextView
         android:id="@+id/question"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginBottom="70dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="30dp"
         
-        android:text="Which character in mahabharata made pandavas won?"
+        android:text="Question"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -57,13 +55,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:background="#0091EA"
-        android:text="Arjunan"
+        android:text="Choices"
         android:textColor="#fff" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Krishnan"
+        android:text="Choices"
         android:background="#0091EA"
         android:textColor="#fff"
         
@@ -73,7 +71,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bheeman"
+        android:text="Choices"
         android:background="#0091EA"
         android:textColor="#fff"
         
@@ -92,5 +90,6 @@
     
     </LinearLayout>
   
+    
 
 </LinearLayout>

@@ -34,17 +34,32 @@
         android:text="You scored 8 out of 9"/>
 
     <Button
-        android:layout_below="@+id/outOf"
         android:id="@+id/retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Retry Quiz"
-        android:padding="8dp"
-        android:layout_margin="4dp"
-        android:textColor="#fff"
+        android:layout_alignBottom="@+id/finish"
+        android:layout_alignLeft="@+id/outOf"
+        android:fontFamily="casual" 
         android:background="#4CAF50"
-        android:textSize="18sp"
+        android:padding="8dp" 
+  
+        android:text="Retry Quiz"
+        android:textColor="#fff"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/outOf"
+        android:layout_marginBottom="76dp"
+        android:background="#B71C1C"
         android:fontFamily="casual"
-        android:layout_centerHorizontal="true"/>
+        android:padding="8dp"
+        android:text="Submit/EXIT"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
 
 </RelativeLayout>

@@ -3,7 +3,8 @@
     package="com.sabari.test"
     android:versionCode="1"
     android:versionName="1.0" >
-     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -50,6 +51,14 @@
         <activity
             android:name="com.sabari.test.TeacherPage"
             android:label="@string/title_activity_teacher_page" >
+        </activity>
+        <activity
+            android:name="com.sabari.test.Topics"
+            android:label="@string/title_activity_topics" >
+        </activity>
+        <activity
+            android:name="com.sabari.test.QuizActivity"
+            android:label="@string/title_activity_quiz" >
         </activity>
     </application>
 

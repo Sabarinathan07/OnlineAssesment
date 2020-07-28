@@ -8,16 +8,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <Button
-        android:id="@+id/btTeacher"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btStudent"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="67dp"
-        android:background="#0091EA"
-        android:textColor="#fff"
-        android:text="Teacher" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="Welcome! to Sabari&apos;s Quiz GAME!!"
+        android:textColor="#4285F4"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btStudent"
@@ -25,34 +27,34 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btTeacher"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
-        android:background="#0091EA"
+        android:layout_marginBottom="21dp"
+        android:background="#34A853"
+        android:text="Student"
         android:textColor="#fff"
-        android:text="Student" />
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btTeacher"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btStudent"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="58dp"
-        android:gravity="center"
-        android:text="Welcome! to Mahabharata Quiz!"
-        android:textColor="#000CFF"
-        android:textStyle="bold"
-        android:textSize="30sp" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="46dp"
+        android:background="#EA4335"
+        android:text="Teacher"
+        android:textColor="#fff" 
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_above="@+id/btStudent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
-        android:text="Select your Login"
-        android:textColor="#30E2FA"
+        android:layout_marginBottom="14dp"
+        android:text="Are you a Student or Teacher"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="20sp" />
+        android:textColor="#ADADAD"
+        android:textSize="16sp" />
 
 </RelativeLayout>
