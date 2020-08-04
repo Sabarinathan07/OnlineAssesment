@@ -1,11 +1,5 @@
 package com.sabari.test;
-import android.app.Activity;
-import android.content.Intent;
 import java.util.ArrayList;
-
-
-
-
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,14 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 public class MyAdapter extends BaseAdapter {
 	
 	 Context c = null;
 	ArrayList list;
 	LayoutInflater inflater;
-	Button Btn;
+	//Button Btn;
+	ImageView image;
 	
 	
 	public MyAdapter(Context c,ArrayList<TopicNames> topicsList){
@@ -52,10 +47,12 @@ public class MyAdapter extends BaseAdapter {
 		View v=inflater.inflate(R.layout.item,arg2,false);
 		Button Btn;
 		Btn = (Button) v.findViewById(R.id.submit);
+		image = (ImageView)v.findViewById(R.id.imageView1);
 		
 		TopicNames topicName = (TopicNames) list.get(pos);
 		
 		Btn.setText(topicName.getTopicName());
+		image.setImageResource(Topics.images[pos]);
 //		Topics obj;
 //		obj = new Topics();
 //		String topic = obj.getList(pos);
@@ -67,52 +64,11 @@ public class MyAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View arg0) {
 
-				if(pos==0){
 					Intent i = new Intent(c,QuizActivity.class);
 					 Bundle bundle = new Bundle();
 			    	  bundle.putInt("topic1",pos+1);
 			    	  i.putExtras(bundle);
-			    	  
-					
 					c.startActivity(i);
-					}
-				if(pos==1){
-					Intent i = new Intent(c,QuizActivity.class);
-					 Bundle bundle = new Bundle();
-			    	  bundle.putInt("topic1",pos+1);
-			    	  i.putExtras(bundle);
-			    	 
-					
-					c.startActivity(i);
-					}
-				
-				if(pos==2){
-					Intent i = new Intent(c,QuizActivity.class);
-					 Bundle bundle = new Bundle();
-			    	  bundle.putInt("topic1",pos+1);
-			    	  i.putExtras(bundle);
-			    	 
-					
-					c.startActivity(i);
-					}
-				if(pos==3){
-					Intent i = new Intent(c,QuizActivity.class);
-					 Bundle bundle = new Bundle();
-			    	  bundle.putInt("topic1",pos+1);
-			    	  i.putExtras(bundle);
-			    	 
-					
-					c.startActivity(i);
-					}
-				if(pos==4){
-					Intent i = new Intent(c,QuizActivity.class);
-					 Bundle bundle = new Bundle();
-			    	  bundle.putInt("topic1",pos+1);
-			    	  i.putExtras(bundle);
-			    	 
-					
-					c.startActivity(i);
-					}
 				
 			}
 		});

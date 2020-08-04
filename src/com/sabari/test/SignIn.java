@@ -6,25 +6,27 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-
-
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.util.Patterns;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 
 public class SignIn extends Activity implements OnClickListener {
 	EditText name,username,password,email;
@@ -45,8 +47,17 @@ public class SignIn extends Activity implements OnClickListener {
 		progressDialog = new ProgressDialog(this);
 		
 		start.setOnClickListener(this);
-			
-		
+	}
+	
+	
+	public void CheckConnection(){
+		ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo nInfo = cm.getActiveNetworkInfo();
+		if(null!=nInfo){
+			registerUser();
+		}else{
+			Toast.makeText(getApplicationContext(), "Please check your Internet connection and Try again! ", Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	private void registerUser(){
@@ -78,6 +89,9 @@ public class SignIn extends Activity implements OnClickListener {
 					}
 					else{
 						Intent i = new Intent(getBaseContext(),Topics.class);
+			        	Bundle bundle = new Bundle();
+				    	bundle.putInt("teacher",0);
+				    	i.putExtras(bundle);
 						startActivity(i);
 					}
 
@@ -145,7 +159,7 @@ public class SignIn extends Activity implements OnClickListener {
 						password.requestFocus();
 						
 					}else{
-						registerUser();
+						CheckConnection();
 					}
 					
 					
@@ -195,7 +209,17 @@ public class SignIn extends Activity implements OnClickListener {
 			return false;
 		}
 		
+		}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+		
+			case R.id.action_settings:
+				Toast.makeText(this, "You Clicked Settings", Toast.LENGTH_LONG).show();
+		
+		}
+		
+		return true;
 	}
-
 
 }

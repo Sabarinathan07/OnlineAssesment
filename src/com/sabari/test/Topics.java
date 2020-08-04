@@ -5,32 +5,25 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-
-
-
-
-import android.os.Bundle;
-import android.app.Activity;
-
-import android.util.Log;
-import android.view.Menu;
-
-
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
 
 public class Topics extends Activity implements OnTopicsRetrievedListener  {
 	ListView listView;
 	//ArrayList<TopicNames> list = new ArrayList<TopicNames>();
 	MyAdapter adapter;
+	TeacherAdapter teacherAdapter;
 	//private RequestQueue mQueue;
 	ArrayList<TopicNames> topicsList;
 	
@@ -42,20 +35,26 @@ public class Topics extends Activity implements OnTopicsRetrievedListener  {
 		setContentView(R.layout.activity_topics);
 		listView = (ListView) findViewById(R.id.lv);
 		topicsList = new ArrayList<TopicNames>();
-		selectTopics();
-		//mQueue = Volley.newRequestQueue(this);
 		
-
+		//mQueue = Volley.newRequestQueue(this);
+		Bundle bundle = getIntent().getExtras();
+		int teacher = bundle.getInt("teacher");
+		
+		selectTopics(teacher);
 		
 	
 //		list.add(new TopicNames("Mahabharatham"));
 //		list.add(new TopicNames("JAVA"));		
 	}
-
-
-
-private void selectTopics() {
 	
+	public static int[] images = new int[]{
+		R.drawable.mahabharat,R.drawable.java,R.drawable.avengers
+	};
+
+
+
+private void selectTopics(int teacher) {
+	final int teacherId = teacher;
 	final OnTopicsRetrievedListener listener = this;
 	
 	StringRequest stringrequest = new StringRequest(Request.Method.GET, Constants.URL_SELECT_TOPICS, 
@@ -83,9 +82,8 @@ private void selectTopics() {
 							
 						}
 						
-						listener.onSuccess(topicsList);
-//						MyAdapter adapter = new MyAdapter(Topics.this,topicsList);
-//						listView.setAdapter(adapter);
+						listener.onSuccess(topicsList,teacherId);
+
 						
 						
 						
@@ -112,7 +110,7 @@ private void selectTopics() {
 					
 			});
 	
-	//mQueue.add(stringrequest);
+	
 	 RequestHandler.getInstance(this).addToRequestQueue(stringrequest);
 	
 }
@@ -123,18 +121,56 @@ private void selectTopics() {
 		getMenuInflater().inflate(R.menu.topics, menu);
 		return true;
 	}
-
-
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+			case R.id.menuLogout:
+				SharePrefManager.getInstance(this).logout();
+				finish();
+				startActivity(new Intent(this,MainActivity.class ));
+				Toast.makeText(this, "Your Account is Succesfully logged out", Toast.LENGTH_LONG).show();
+				break;
+			case R.id.action_settings:
+				Toast.makeText(this, "You Clicked Settings", Toast.LENGTH_LONG).show();
+		
+		}
+		
+		return true;
+	}
 
 
 
 	@Override
-	public void onSuccess(ArrayList<TopicNames> topicList) {
+	public void onSuccess(ArrayList<TopicNames> topicsList,int teacher) {
+		
+		int teacherId = teacher;
+		if(teacherId==1){
+			TeacherAdapter teacherAdapter = new TeacherAdapter(Topics.this,topicsList);
+			listView.setAdapter(teacherAdapter);
+			
+			
+		}else{
+		
+			
 		
 		MyAdapter adapter = new MyAdapter(Topics.this,topicsList);
 		listView.setAdapter(adapter);
-		
+		}
 	}
+
+	}
+
+
+
+
+
+
+
+
+
+	
+	
 	
 
 
@@ -142,13 +178,3 @@ private void selectTopics() {
 
 
 
-
-	
-	
-	
-
-
-
-
-
-}

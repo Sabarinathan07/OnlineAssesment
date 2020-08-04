@@ -21,12 +21,17 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int quizpng=0x7f020001;
-        public static final int stu=0x7f020002;
+        public static final int avengers=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int java=0x7f020002;
+        public static final int mahabharat=0x7f020003;
+        public static final int quiz=0x7f020004;
+        public static final int quizpng=0x7f020005;
+        public static final int stu=0x7f020006;
+        public static final int student1=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001e;
+        public static final int action_settings=0x7f08001f;
         public static final int btLogin=0x7f080018;
         public static final int btSign=0x7f080017;
         public static final int btStudent=0x7f080004;
@@ -38,23 +43,25 @@ public final class R {
         public static final int finish=0x7f080011;
         public static final int grade=0x7f08000e;
         public static final int imageView1=0x7f080016;
-        public static final int lv=0x7f08001c;
+        public static final int listView1=0x7f08001c;
+        public static final int lv=0x7f08001d;
+        public static final int menuLogout=0x7f080020;
         public static final int name=0x7f080012;
         public static final int outOf=0x7f08000f;
         public static final int pass=0x7f080001;
         public static final int password1=0x7f080015;
         public static final int question=0x7f080009;
         public static final int quit=0x7f08000d;
+        public static final int rScore=0x7f080006;
+        public static final int rUsername=0x7f080003;
         public static final int retry=0x7f080010;
         public static final int score=0x7f080008;
         public static final int score_text=0x7f080007;
         public static final int start=0x7f080002;
-        public static final int submit=0x7f08001d;
+        public static final int submit=0x7f08001e;
         public static final int tLogin=0x7f08001b;
         public static final int tPass=0x7f08001a;
         public static final int tUsername=0x7f080019;
-        public static final int textView1=0x7f080003;
-        public static final int textView2=0x7f080006;
         public static final int username=0x7f080000;
         public static final int username1=0x7f080013;
     }
@@ -69,6 +76,7 @@ public final class R {
         public static final int activity_teacher_page=0x7f030007;
         public static final int activity_topics=0x7f030008;
         public static final int item=0x7f030009;
+        public static final int result_item=0x7f03000a;
     }
     public static final class menu {
         public static final int login=0x7f070000;

@@ -3,26 +3,26 @@ package com.sabari.test;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONObject;
 import org.json.JSONException;
+import org.json.JSONObject;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 
 public class TeacherActivity extends Activity implements OnClickListener {
 	EditText name,password;
@@ -68,8 +68,11 @@ public class TeacherActivity extends Activity implements OnClickListener {
 						Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
 					}
 					else{
-						Toast.makeText(getApplicationContext(), "user login successful!!", Toast.LENGTH_LONG).show();
-						Intent i = new Intent(getBaseContext(),TeacherPage.class);
+						Toast.makeText(getApplicationContext(), "Teacher Login Succesful", Toast.LENGTH_LONG).show();
+						Intent i = new Intent(getBaseContext(),Topics.class);
+						Bundle bundle = new Bundle();
+				    	bundle.putInt("teacher",1);
+				    	i.putExtras(bundle);
 						startActivity(i);
 					}
 
@@ -124,6 +127,17 @@ public class TeacherActivity extends Activity implements OnClickListener {
 
 		
 		
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+		
+			case R.id.action_settings:
+				Toast.makeText(this, "You Clicked Settings", Toast.LENGTH_LONG).show();
+		
+		}
+		
+		return true;
 	}
 
 }

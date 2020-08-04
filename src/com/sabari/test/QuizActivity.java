@@ -8,23 +8,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 
 
 
@@ -58,11 +59,21 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 		
 		quizid = Integer.toString(id);
 		
-		updateQuestion();
+		CheckConnection();
 		
 		
 		
 
+	}
+	
+	public void CheckConnection(){
+		ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo nInfo = cm.getActiveNetworkInfo();
+		if(null!=nInfo){
+			updateQuestion();
+		}else{
+			Toast.makeText(getApplicationContext(), "Please check your Internet connection and Try again! ", Toast.LENGTH_LONG).show();
+		}
 	}
 	
 
@@ -166,6 +177,22 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 		getMenuInflater().inflate(R.menu.quiz, menu);
 		return true;
 	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+			case R.id.menuLogout:
+				SharePrefManager.getInstance(this).logout();
+				finish();
+				startActivity(new Intent(this,MainActivity.class ));
+				Toast.makeText(this, "Your Account is Succesfully logged out", Toast.LENGTH_LONG).show();
+				break;
+			case R.id.action_settings:
+				Toast.makeText(this, "You Clicked Settings", Toast.LENGTH_LONG).show();
+		
+		}
+		
+		return true;
+	}
 
 	@Override
 	public void onSucess1(ArrayList<Question> questionList) {
@@ -184,7 +211,7 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 				if(choice1.getText().equals(answer)){
 					score = score+1;
 					updateScore(score);
-					Toast.makeText(QuizActivity.this,"correct",Toast.LENGTH_SHORT).show();
+					
 						
 							
 					  if(qnNumber == qnlist.size()){
@@ -203,7 +230,7 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 					
 				}else{
 					
-					Toast.makeText(QuizActivity.this,"wrong",Toast.LENGTH_SHORT).show();
+					
 					
 					 if(qnNumber == qnlist.size()){
 				    	  Intent i =new Intent(QuizActivity.this,ResultActivity.class);
@@ -237,7 +264,7 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 				if(choice2.getText().equals(answer)){
 					score = score+1;
 					updateScore(score);
-					Toast.makeText(QuizActivity.this,"correct",Toast.LENGTH_SHORT).show();
+					
 						
 							
 					  if(qnNumber == qnlist.size()){
@@ -256,7 +283,7 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 					
 				}else{
 					
-					Toast.makeText(QuizActivity.this,"wrong",Toast.LENGTH_SHORT).show();
+				
 					
 					 if(qnNumber == qnlist.size()){
 				    	  Intent i =new Intent(QuizActivity.this,ResultActivity.class);
@@ -286,7 +313,7 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 				if(choice3.getText().equals(answer)){
 					score = score+1;
 					updateScore(score);
-					Toast.makeText(QuizActivity.this,"correct",Toast.LENGTH_SHORT).show();
+					
 						
 							
 					  if(qnNumber == qnlist.size()){
@@ -305,7 +332,7 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 					
 				}else{
 					
-					Toast.makeText(QuizActivity.this,"wrong",Toast.LENGTH_SHORT).show();
+					
 					
 					 if(qnNumber == qnlist.size()){
 				    	  Intent i =new Intent(QuizActivity.this,ResultActivity.class);
@@ -346,7 +373,7 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 	}
 	
 	private void nextQuestion(){
-	    questionView.setText(qnlist.get(qnNumber).getQuestion());
+	    questionView.setText(qnNumber+1 +". "+qnlist.get(qnNumber).getQuestion());
 		choice1.setText(qnlist.get(qnNumber).getChoice1());
 		choice2.setText(qnlist.get(qnNumber).getChoice2());
 		choice3.setText(qnlist.get(qnNumber).getChoice3());
@@ -358,7 +385,9 @@ public class QuizActivity extends Activity implements onQuestionsRetrievedListen
 		}
 	
 	private void updateScore(int a){
-		scoreView.setText(""+score);
+		scoreView.setText(score+"/25");
 	}
+
+
 
 }

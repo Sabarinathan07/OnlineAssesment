@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Test</string>
+    <string name="app_name">Quiz</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_student">Student</string>
     <string name="title_activity_teacher">Teacher</string>
     <string name="title_activity_student_page">Student</string>
     <string name="title_activity_login">Login</string>
-    <string name="title_activity_sign_in">Sign In</string>
+    <string name="title_activity_sign_in">Sign Up</string>
     <string name="title_activity_result">Result</string>
     <string name="title_activity_teacher_page">Teacher</string>
     <string name="title_activity_topics">Topics</string>

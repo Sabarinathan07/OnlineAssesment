@@ -10,22 +10,22 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
-
-import android.os.Bundle;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class ResultActivity extends Activity {
@@ -70,10 +70,12 @@ public class ResultActivity extends Activity {
 			grade.setText("Excellent! You did your Best Man!");
 		}else if(score<23 && score>=20){
 			grade.setText("Good! Better luck next time!");
-		}else if(score<20 && score>=10){
-			grade.setText("Your effort is not enough for quiz.");
+		}else if(score<20 && score>=15){
+			grade.setText("Try to Score more mark next time!");
+		}else if(score<15 && score>=10){
+			grade.setText("Your effort is not enough for this Quiz!");
 		}else{
-			grade.setText("You really need to work hard!");
+			grade.setText("You really need to Work Hard!");
 		}
 		
 		retry.setOnClickListener(new View.OnClickListener() {
@@ -91,8 +93,10 @@ public class ResultActivity extends Activity {
 			
 			@Override
 			public void onClick(View arg0) {
-				finish();
+				Intent i = new Intent(getBaseContext(),MainActivity.class);
+				startActivity(i);
 				
+			
 			}
 		});		
 	}
@@ -125,7 +129,7 @@ public class ResultActivity extends Activity {
 				try {
 					
 					JSONObject jsonobject = new JSONObject(Response);
-					Toast.makeText(getApplicationContext(), jsonobject.getString("message"), Toast.LENGTH_LONG).show();
+					
 					
 				} catch (JSONException e) {
 						e.printStackTrace();
@@ -182,7 +186,30 @@ public class ResultActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.result, menu);
+		
 		return true;
 	}
+
+
+
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+			case R.id.menuLogout:
+				SharePrefManager.getInstance(this).logout();
+				finish();
+				startActivity(new Intent(this,MainActivity.class ));
+				Toast.makeText(this, "Your Account is Succesfully logged out", Toast.LENGTH_LONG).show();
+				break;
+			case R.id.action_settings:
+				Toast.makeText(this, "You Clicked Settings", Toast.LENGTH_LONG).show();
+		
+		}
+		
+		return true;
+	}
+	
+	
 
 }

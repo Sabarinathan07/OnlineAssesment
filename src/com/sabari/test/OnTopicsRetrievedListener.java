@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public interface OnTopicsRetrievedListener {
 	
-	public void onSuccess(ArrayList<TopicNames> topicsList);
+	public void onSuccess(ArrayList<TopicNames> topicsList,int teacher);
+
 
 }

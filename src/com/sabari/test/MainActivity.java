@@ -1,17 +1,13 @@
 package com.sabari.test;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.android.volley.toolbox.JsonObjectRequest;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
     Button btStudent,btTeacher;
@@ -21,10 +17,14 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         btStudent = (Button) findViewById(R.id.btStudent);
         btTeacher = (Button) findViewById(R.id.btTeacher);
+       
         
         if(SharePrefManager.getId(getApplicationContext())!=0){
-        	Intent studentIntent = new Intent(getBaseContext(),Topics.class);
-			startActivity(studentIntent);
+        	Intent i = new Intent(getBaseContext(),Topics.class);
+        	Bundle bundle = new Bundle();
+	    	bundle.putInt("teacher",0);
+	    	i.putExtras(bundle);
+			startActivity(i);
         }
         
         btStudent.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +33,7 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				Intent studentIntent = new Intent(getBaseContext(),StudentPage.class);
 				startActivity(studentIntent);
+				
 				
 				
 			}
@@ -44,6 +45,7 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				Intent teacherIntent = new Intent(getBaseContext(),TeacherActivity.class);
 				startActivity(teacherIntent);
+				
 				
 			}
 		});
@@ -75,5 +77,16 @@ public class MainActivity extends Activity {
 //			e.printStackTrace();
 //		}
 //    }
-    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+		
+			case R.id.action_settings:
+				Toast.makeText(this, "You Clicked Settings", Toast.LENGTH_LONG).show();
+		
+		}
+		
+		return true;
+	}
+
 }
